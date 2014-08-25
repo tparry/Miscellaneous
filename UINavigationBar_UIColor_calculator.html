@@ -1,0 +1,45 @@
+<html><head><title>UINavigationBar UIColor Calculator</title></head><body>
+
+<a target="_blank" href="http://b2cloud.com.au/how-to-guides/bar-color-calculator-for-ios7-and-ios8/">Refer to http://b2cloud.com.au/how-to-guides/bar-color-calculator-for-ios7-and-ios8</a>
+
+<script>
+function toUI(sender, targetId)
+{
+var v = parseInt(sender.value);
+if(v != v) v = 0;
+if(v > 255) v = 255;
+var r = (v - 40) / (1 - 40 / 255);
+var target = document.getElementById(targetId);
+if(r >= 0) target.innerHTML = r.toFixed(0);
+else target.innerHTML = '0 (Clipped)';
+}
+function toDes(sender, targetId)
+{
+var v = parseInt(sender.value);
+if(v != v) v = 0;
+if(v > 255) v = 255;
+var r = (1 - 40 / 255) * v + 40;
+var target = document.getElementById(targetId);
+if(r >= 0) target.innerHTML = r.toFixed(0);
+else target.innerHTML = '0 (Clipped)';
+target.innerHTML = r.toFixed(0);
+}
+</script>
+
+<form>
+<p><strong>From designs to barTintColor UIColor</strong><br/><span style="color: #444;"><em>(If you know what your on screen RGB values should be, this is what you will need to set on UIColor to have them show the same way on screen when run)</em></span><br/>Note that values under 40 will be clipped to 0 and wont be shown exactly as intended</p>
+<div>Design R<input type="text" placeholder="40-255" onkeyup="toUI(this, 'toUIr')" onchange="toUI(this, 'toUIr')" size="6"><span id="toUIr"></span></div>
+<div>Design G<input type="text" placeholder="40-255" onkeyup="toUI(this, 'toUIg')" onchange="toUI(this, 'toUIg')" size="6"><span id="toUIg"></span></div>
+<div>Design B<input type="text" placeholder="40-255" onkeyup="toUI(this, 'toUIb')" onchange="toUI(this, 'toUIb')" size="6"><span id="toUIb"></span></div>
+</form>
+
+<hr/>
+
+<form>
+<p><strong>From barTintColor UIColor to designs</strong><br/><span style="color: #444;"><em>(If you know what the UIColor values are, this will be what they will look like on screen when run)</em></span></p>
+<div>UIColor R<input type="text" placeholder="0-255" onkeyup="toDes(this, 'toDesr')" onchange="toDes(this, 'toDesr')" size="5"><span id="toDesr"></span></div>
+<div>UIColor G<input type="text" placeholder="0-255" onkeyup="toDes(this, 'toDesg')" onchange="toDes(this, 'toDesg')" size="5"><span id="toDesg"></span></div>
+<div>UIColor B<input type="text" placeholder="0-255" onkeyup="toDes(this, 'toDesb')" onchange="toDes(this, 'toDesb')" size="5"><span id="toDesb"></span></div>
+</form>
+
+</body></html>
